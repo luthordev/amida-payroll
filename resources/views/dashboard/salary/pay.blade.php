@@ -84,7 +84,7 @@ function penghasilan() {
     let div = document.createElement('div')
     div.className = "input-group mt-3"
     let input =
-        `<div class = 'input-group-prepend'><input type = 'text'class = 'form-control' name = 'penghasilan-a[] placeholder = 'Penghasilan' required></div> <input type = 'number' class = 'form-control' name = 'penghasilan-b[]' placeholder = 'Nominal' min='0' required>`
+        `<div class = 'input-group-prepend'><input type = 'text'class = 'form-control' name = 'penghasilan-a[]' placeholder = 'Penghasilan' required></div> <input type = 'number' class = 'form-control' name = 'penghasilan-b[]' placeholder = 'Nominal' min='0' required>`
     div.innerHTML += input;
     penghasilan.appendChild(div)
     penghasilan_no++

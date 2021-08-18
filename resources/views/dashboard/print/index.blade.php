@@ -62,7 +62,7 @@ function goPrint() {
     //     "<div><button onclick='printSlip()' class='btn btn-warning'>Print</button>  <button class='btn btn-success'>Export to PDF</button></div>"
     setTimeout(() => {
         if (typeof(preview) != 'undefined' && preview != null) printSlip()
-    }, 300);
+    }, 500);
 
 }
 

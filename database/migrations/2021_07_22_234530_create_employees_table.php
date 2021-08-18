@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('position_id')->references('id')->on('positions');
             $table->bigInteger('division_id')->unsigned();
             $table->foreign('division_id')->references('id')->on('divisions');
+            $table->enum('status', ['Tetap', 'PKWT']);
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

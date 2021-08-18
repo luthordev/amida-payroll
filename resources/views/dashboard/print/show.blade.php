@@ -62,6 +62,10 @@
                             <td>NAMA</td>
                             <td><span class="ml-5">{{strtoupper($salary->name)}}</span></td>
                         </tr>
+                        <tr>
+                            <td>KONTRAK</td>
+                            <td><span class="ml-5">{{strtoupper($salary->contract)}}</span></td>
+                        </tr>
                     </table>
                 </div>
             </div>

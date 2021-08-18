@@ -40,6 +40,7 @@ class EmployeeController extends Controller
             'no_bank_account'=>'required',
             'position'=>'required',
             'division'=>'required',
+            'status'=>'required',
         ]);        
 
         $employee = new Employee([
@@ -48,7 +49,8 @@ class EmployeeController extends Controller
             'bank' => $request->get('bank'),
             'no_bank_account' => $request->get('no_bank_account'),
             'position_id' => $request->get('position'),
-            'division_id' => $request->get('division')
+            'division_id' => $request->get('division'),
+            'status' => $request->get('status')
         ]);
         $employee->save();
         return redirect('/dashboard/employee')->with('success', 'Data telah ditambahkan!');
