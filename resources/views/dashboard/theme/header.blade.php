@@ -25,3 +25,5 @@
     @yield('style')
     </style>
 </head>
+
+@yield('body')

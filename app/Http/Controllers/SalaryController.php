@@ -7,6 +7,7 @@ use App\Salary;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SalaryController extends Controller
 {
@@ -94,6 +95,7 @@ class SalaryController extends Controller
             'bulan' => $bulan,
             'tahun' => $now->year,
             'employee_id' => $employee->id,
+            'user_id' => Auth::id(),
             'penghasilan' => json_encode($penghasilan),
             'potongan' => json_encode($potongan)
         ]);

@@ -6,7 +6,7 @@
             class="fas fa-bars"></i></button>
 
     <!-- Navbar-->
-    <ul class="navbar-nav ml-auto">
+    <!-- <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -15,10 +15,10 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
+                <li><a class="dropdown-item" href="">Logout</a></li>
             </ul>
         </li>
-    </ul>
+    </ul> -->
 </nav>
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
@@ -51,11 +51,21 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                         Cetak Slip Gaji
                     </a>
+                    @if(Auth::user()->roles == "admin")
+                    <a class="nav-link" href="{{url('dashboard/users')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Pengguna
+                    </a>
+                    @endif
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn nav-link">Logout</button>
+                    </form>
+                    <!-- <a class="nav-link" href="{{url('logout')}}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-sign-out"></i></div>
+                        Logout
+                    </a> -->
                 </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Login sebagai:</div>
-                Luthfi Athorique
             </div>
         </nav>
     </div>

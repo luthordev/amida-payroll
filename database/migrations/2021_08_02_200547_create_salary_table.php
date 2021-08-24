@@ -20,6 +20,7 @@ class CreateSalaryTable extends Migration
             $table->foreignId('employee_id');
             $table->json('penghasilan');
             $table->json('potongan');
+            $table->foreignId('user_id');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

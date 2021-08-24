@@ -50,9 +50,9 @@
                         <a href="{{route('employee.edit', $e->id)}}" class="btn btn-warning">
                             <i class="fa fa-pencil-alt"></i>
                         </a>
-                        <button onclick="deleteData('{{$e->id}}', '{{$e->name}}')" class="btn btn-danger">
+                        <a href="{{route('employee.delete', $e->id)}}" class="btn btn-danger">
                             <i class="fa fa-trash-alt"></i>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach

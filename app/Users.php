@@ -15,9 +15,13 @@ class Users extends Authenticatable
      *
      * @var array
      */
+    public $timestamps = false;
+    
     protected $fillable = [
         'name', 
         'username', 
+        'password',
+        'roles',
         'registered_at',
     ];
 
@@ -28,7 +32,6 @@ class Users extends Authenticatable
      */
     protected $hidden = [
         'password', 
-        'remember_token',
     ];
 
 }

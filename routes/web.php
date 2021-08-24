@@ -8,14 +8,16 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PrintController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
+Route::get('/login', [AuthController::class, 'showFormLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('validate');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//Route::middleware(['isAdmin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-    
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard/employee', [EmployeeController::class, 'index']);
     Route::get('/dashboard/employee/add', [EmployeeController::class, 'add']);
     Route::post('/dashboard/employee/adding', [EmployeeController::class, 'store'])->name('employee.add');
@@ -43,4 +45,11 @@ Route::get('/', function () {
     
     Route::get('/dashboard/slip', [PrintController::class, 'index']);
     Route::get('/dashboard/print/{month}/{id}', [PrintController::class, 'print'])->name('print');
-//});
+    
+    Route::get('/dashboard/users', [UserController::class, 'index'])->middleware('admin')->name('user');
+    Route::get('/dashboard/users/add', [UserController::class, 'add'])->middleware('admin');
+    Route::post('/dashboard/users/adding', [UserController::class, 'store'])->middleware('admin')->name('user.add');
+    Route::get('/dashboard/users/edit/{id}', [UserController::class, 'edit'])->middleware('admin')->name('user.edit');
+    Route::patch('/dashboard/users/update/{id}', [UserController::class, 'update'])->middleware('admin')->name('user.update');
+    Route::get('/dashboard/users/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+});

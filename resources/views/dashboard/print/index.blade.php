@@ -22,7 +22,7 @@
                 <option value="" selected disabled>
                     --- PILIH BULAN ---
                 </option>
-                <option value="Januari" {{ $e->bank == 'BRI' ? 'selected' : '' }}>Januari</option>
+                <option value="Januari">Januari</option>
                 <option value="Februari">Februari</option>
                 <option value="Maret">Maret</option>
                 <option value="April">April</option>
