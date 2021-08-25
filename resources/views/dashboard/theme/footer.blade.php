@@ -31,37 +31,12 @@
                     <!--Grid row-->
                     <div class="row">
                         <!--Grid column-->
-                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                            <h5 class="text-uppercase">Support : imahcoding</h5>
-                            Alamat :
+                        <div class="col-lg-8 col-md-12 mb-4 mb-md-0">
+                            <h6 class="text-uppercase">Support : imahcoding</h6>
                             <p>
-                                Perum Buana Subang Raya Blok F8 No. 31, Wanareja, Kec. Pagaden, Kabupaten Subang, Jawa
-                                Barat 41211
+                                Office : Perum Buana Subang Raya Blok F8 No. 31, Subang, Jawa
+                                Barat. <a href="tel:+6285222136666" class="text-white">085222136666</a>
                             </p>
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                            <h5 class="text-uppercase">Email</h5>
-
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="mailto:imahcoding@gmail.com" class="text-white">imahcoding@gmail.com</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--Grid column-->
-
-                        <!--Grid column-->
-                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                            <h5 class="text-uppercase">Telepon / Whatsapp</h5>
-
-                            <ul class="list-unstyled mb-0">
-                                <li>
-                                    <a href="tel:+6285222136666" class="text-white">085222136666</a>
-                                </li>
-                            </ul>
                         </div>
                         <!--Grid column-->
                     </div>
