@@ -43,12 +43,12 @@ class PrintController extends Controller
         // return $pdf->stream();
         $total_penghasilan = 0;
         foreach($penghasilan as $p){
-            $total_penghasilan += $p;
+            $total_penghasilan += str_replace(".", "", $p);
         }
 
         $total_potongan = 0;
         foreach($potongan as $p){
-            $total_potongan += $p;
+            $total_potongan += str_replace(".", "", $p);
         }
 
         $penghasilan_bersih = $total_penghasilan - $total_potongan;

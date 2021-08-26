@@ -1,42 +1,41 @@
 @extends('dashboard.theme.default')
-@section('title', 'Data Jabatan')
-@section('subtitle', 'Mengelola Data Jabatan')
+@section('title', 'Data Gaji')
+@section('subtitle', 'Edit Data Gaji')
 
 @section('content')
-
-<div class="card mb-4 col-md-2">
-    <a href="{{url('dashboard/position/add')}}" class="btn btn-primary p-2">Tambah Jabatan</a>
-</div>
 
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Data Jabatan
+        Data Gaji
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
                 <tr>
-                    <th>Jabatan</th>
+                    <th>Nama Karyawan</th>
+                    <th>Bulan</th>
+                    <th>Tahun</th>
                     <th></th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>Jabatan</th>
+                    <th>Nama Karyawan</th>
+                    <th>Bulan</th>
+                    <th>Tahun</th>
                     <th></th>
                 </tr>
             </tfoot>
             <tbody>
-                @foreach($positions as $p)
+                @foreach($salary as $s)
                 <tr>
-                    <td class="align-middle">{{$p->position}}</td>
+                    <td class="align-middle">{{$s->name}}</td>
+                    <td class="align-middle">{{$s->bulan}}</td>
+                    <td class="align-middle">{{$s->tahun}}</td>
                     <td class="text-center">
-                        <a href="{{route('position.edit', $p->id)}}" class="btn btn-warning">
+                        <a href="{{route('salary.edit', $s->id)}}" class="btn btn-warning">
                             <i class="fa fa-pencil-alt"></i>
-                        </a>
-                        <a href="{{route('position.delete', $p->id)}}" class="btn btn-danger">
-                            <i class="fa fa-trash-alt"></i>
                         </a>
                     </td>
                 </tr>

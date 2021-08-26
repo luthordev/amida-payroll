@@ -1,5 +1,12 @@
-@extends('dashboard.theme.default') @section('title', 'Data Gaji')
-@section('subtitle', 'Mengelola Data Gaji') @section('content')
+@extends('dashboard.theme.default')
+@section('title', 'Data Gaji')
+@section('subtitle', 'Mengelola Data Gaji')
+
+@section('content')
+
+<div class="card mb-4 col-md-2">
+    <a href="{{url('dashboard/salary/data')}}" class="btn btn-success p-2">Edit Data Gaji</a>
+</div>
 
 <div class="card mb-4">
     <div class="card-header">

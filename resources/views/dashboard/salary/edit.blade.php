@@ -14,41 +14,36 @@
     </div>
     <br />
     @endif
-    @foreach($employee as $e)
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group mt-2">
                     <label for="employee">Nama Karyawan</label>
-                    <input type="text" name="employee" id="employee" class="form-control" value="{{$e->name}}"
-                        disabled />
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group mt-2">
-                    <label for="jabatan">Jabatan</label>
-                    <input type="text" name="jabatan" id="jabatan" class="form-control" value="{{$e->position}}"
+                    <input type="text" name="employee" id="employee" class="form-control" value="{{$salary->name}}"
                         disabled />
                 </div>
             </div>
         </div>
     </div>
     <hr />
-    <form action="{{ route('salary.add') }}" method="post">
+    <form action="{{ route('salary.update', $salary->id) }}" method="post">
+        @method('PATCH')
         @csrf
-        <input type="number" name="employee_id" id="employee_id" value="{{$e->id}}" hidden />
+        <input type="number" name="salary_id" id="salary_id" value="{{$salary->id}}" hidden />
         <div class="row">
             <div class="col-md-6">
                 <div><b>PENGHASILAN</b></div>
                 <div id="list-penghasilan">
+                    @foreach($penghasilan as $name => $value)
                     <div class="input-group mt-3">
                         <div class="input-group-prepend">
                             <input type="text" class="form-control" name="penghasilan-a[]" placeholder="Penghasilan"
-                                required>
+                                value="{{$name}}" required>
                         </div>
                         <input type="text" class="form-control uang" name="penghasilan-b[]" placeholder="Nominal"
-                            required>
+                            value="{{$value}}" required>
                     </div>
+                    @endforeach
                 </div>
                 <div class="input-group mt-3">
                     <button type="button" onclick="penghasilan()" class="btn btn-success">Tambah Penghasilan <i
@@ -58,12 +53,16 @@
             <div class="col-md-6">
                 <div><b>POTONGAN</b></div>
                 <div id="list-potongan">
+                    @foreach($potongan as $name => $value)
                     <div class="input-group mt-3">
                         <div class="input-group-prepend">
-                            <input type="text" class="form-control" name="potongan-a[]" placeholder="Potongan" required>
+                            <input type="text" class="form-control" name="potongan-a[]" placeholder="Potongan"
+                                value="{{$name}}" required>
                         </div>
-                        <input type="text" class="form-control uang" name="potongan-b[]" placeholder="Nominal" required>
+                        <input type="text" class="form-control uang" name="potongan-b[]" placeholder="Nominal"
+                            value="{{$value}}" required>
                     </div>
+                    @endforeach
                 </div>
                 <div class="input-group mt-3">
                     <button type="button" onclick='potongan()' class="btn btn-success">Tambah Potongan <i
@@ -74,7 +73,6 @@
         <hr />
         <button class="btn btn-primary float-right">Submit</button>
     </form>
-    @endforeach
 </div>
 
 <script>

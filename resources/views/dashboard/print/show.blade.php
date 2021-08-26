@@ -92,7 +92,7 @@
                     @foreach($penghasilan as $name => $value)
                     <li class="list-group-item d-flex justify-content-between">
                         {{$name}}
-                        <span>@money($value)</span>
+                        <span>{{$value}}</span>
                     </li>
                     @endforeach
                 </ul>
@@ -103,7 +103,7 @@
                     @foreach($potongan as $name => $value)
                     <li class="list-group-item d-flex justify-content-between">
                         {{$name}}
-                        <span>@money($value)</span>
+                        <span>{{$value}}</span>
                     </li>
                     @endforeach
                 </ul>

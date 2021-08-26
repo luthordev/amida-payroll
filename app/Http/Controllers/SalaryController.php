@@ -55,20 +55,6 @@ class SalaryController extends Controller
         ];
         $bulan = $months[$now->month-1];
 
-        $request->validate([
-            'employee_id'=>'required',
-            'tunjangan_pj'=>'nullable',
-            'jasa_swab'=>'nullable',
-            'lembur'=>'nullable',
-            'lain'=>'nullable',
-            'deskripsi'=>'nullable',
-            'tabungan'=>'nullable',
-            'piutang'=>'nullable',
-            'bpjs_naker'=>'nullable',
-            'bpjs_kesehatan'=>'nullable',
-            'dplk_bri'=>'nullable'
-        ]);
-
         $penghasilanNama = $request->get('penghasilan-a');
         $penghasilanValue = $request->get('penghasilan-b');
         $potonganNama = $request->get('potongan-a');
@@ -103,5 +89,51 @@ class SalaryController extends Controller
         $salary->save();
         
         return redirect('/dashboard/salary')->with('success', 'Data telah ditambahkan!');
+    }
+
+    public function data(){
+        $salary = Salary::join('employees', 'employees.id', '=', 'salary.employee_id')
+                ->select('employees.name', 'salary.bulan', 'salary.tahun', 'salary.id')
+                ->get();
+        return view('dashboard.salary.data', compact('salary'));
+    }
+
+    public function edit($id){
+        $salary = Salary::find($id)
+                ->join('employees', 'employees.id', '=', 'salary.employee_id')
+                ->select('salary.id', 'salary.penghasilan', 'salary.potongan', 'employees.name')
+                ->first();
+        $penghasilan = json_decode($salary->penghasilan);
+        $potongan = json_decode($salary->potongan);
+        
+        return view('dashboard.salary.edit', compact('salary', 'penghasilan', 'potongan'));
+    }
+
+    public function update(Request $request, $id){
+        $penghasilanNama = $request->get('penghasilan-a');
+        $penghasilanValue = $request->get('penghasilan-b');
+        $potonganNama = $request->get('potongan-a');
+        $potonganValue = $request->get('potongan-b');
+
+        $penghasilan = [];
+        $potongan = [];
+        
+        for($i = 0; $i < count($penghasilanNama); $i++){
+            $nama = $penghasilanNama[$i];
+            $value = $penghasilanValue[$i];
+            $penghasilan[$nama] = $value;
+        }
+
+        for($i = 0; $i < count($potonganNama); $i++){
+            $nama = $potonganNama[$i];
+            $value = $potonganValue[$i];
+            $potongan[$nama] = $value;
+        }
+        
+        $salary = Salary::find($id);
+        $salary->penghasilan = json_encode($penghasilan);
+        $salary->potongan = json_encode($potongan);
+        $salary->save();
+        return redirect('/dashboard/salary/data')->with('success', 'Data telah diperbarui!');
     }
 }

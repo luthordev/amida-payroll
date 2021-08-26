@@ -40,6 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/division/delete/{id}', [DivisionController::class, 'delete'])->name('division.delete');
     
     Route::get('/dashboard/salary', [SalaryController::class, 'index']);
+    Route::get('/dashboard/salary/data', [SalaryController::class, 'data']);
+    Route::get('/dashboard/salary/edit/{id}', [SalaryController::class, 'edit'])->name('salary.edit');
+    Route::patch('/dashboard/salary/update/{id}', [SalaryController::class, 'update'])->name('salary.update');
     Route::get('/dashboard/salary/pay/{id}', [SalaryController::class, 'pay'])->name('salary.pay');
     Route::post('/dashboard/salary/adding', [SalaryController::class, 'store'])->name('salary.add');
     

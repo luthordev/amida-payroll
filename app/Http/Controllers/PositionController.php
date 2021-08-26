@@ -28,14 +28,10 @@ class PositionController extends Controller
     {
         $request->validate([
             'position'=>'required',
-            'salary'=>'required',
-            'allowance'=>'required',
         ]);        
 
         $position = new Position([
             'position' => $request->get('position'),
-            'salary' => $request->get('salary'),
-            'allowance' => $request->get('allowance')
         ]);
         $position->save();
         return redirect('/dashboard/position')->with('success', 'Data telah ditambahkan!');
@@ -51,14 +47,10 @@ class PositionController extends Controller
     {
         $request->validate([
             'position'=>'required',
-            'salary'=>'required',
-            'allowance'=>'required'
         ]);        
 
         $positions = Position::find($id);
         $positions->position =  $request->get('position');
-        $positions->salary =  $request->get('salary');
-        $positions->allowance =  $request->get('allowance');
         $positions->save();
         return redirect('/dashboard/position')->with('success', 'Data telah diperbarui!');
     }
