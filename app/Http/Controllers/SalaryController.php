@@ -102,11 +102,11 @@ class SalaryController extends Controller
     public function edit($id){
         $salary = Salary::join('employees', 'employees.id', '=', 'salary.employee_id')
                 ->where('salary.employee_id', $id)
-                ->select('salary.id', 'salary.penghasilan', 'salary.potongan', 'employees.name', 'employees.id')
+                ->select('salary.id', 'salary.penghasilan', 'salary.potongan', 'employees.name')
                 ->first();
         $penghasilan = json_decode($salary->penghasilan);
         $potongan = json_decode($salary->potongan);
-        
+        return $salary;
         return view('dashboard.salary.edit', compact('salary', 'penghasilan', 'potongan'));
     }
 
