@@ -94,14 +94,15 @@ class SalaryController extends Controller
     public function data(){
         $salary = Salary::join('employees', 'employees.id', '=', 'salary.employee_id')
                 ->select('employees.name', 'salary.bulan', 'salary.tahun', 'salary.id')
+                ->select('employees.id', 'employees.name', 'salary.bulan', 'salary.tahun')
                 ->get();
         return view('dashboard.salary.data', compact('salary'));
     }
 
     public function edit($id){
-        $salary = Salary::find($id)
-                ->join('employees', 'employees.id', '=', 'salary.employee_id')
-                ->select('salary.id', 'salary.penghasilan', 'salary.potongan', 'employees.name')
+        $salary = Salary::join('employees', 'employees.id', '=', 'salary.employee_id')
+                ->where('salary.employee_id', $id)
+                ->select('salary.id', 'salary.penghasilan', 'salary.potongan', 'employees.name', 'employees.id')
                 ->first();
         $penghasilan = json_decode($salary->penghasilan);
         $potongan = json_decode($salary->potongan);

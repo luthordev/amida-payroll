@@ -118,7 +118,7 @@
                         <span class="font-weight-bold">@money($total_penghasilan)</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        Diteirma
+                        Diterima
                         <span class="font-weight-bold text-danger">@money($penghasilan_bersih)</span>
                     </li>
                 </ul>
