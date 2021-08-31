@@ -106,7 +106,7 @@ class SalaryController extends Controller
                 ->first();
         $penghasilan = json_decode($salary->penghasilan);
         $potongan = json_decode($salary->potongan);
-        return $salary;
+        
         return view('dashboard.salary.edit', compact('salary', 'penghasilan', 'potongan'));
     }
 
